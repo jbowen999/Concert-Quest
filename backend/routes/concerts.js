@@ -13,6 +13,7 @@
 import { Router } from "express";
 
 import * as db from "../db/concerts.js";
+import { deleteReviewsForConcert } from "../db/reviews.js";
 import { canEdit, hashPasscode, withoutPasscode } from "../passcode.js";
 
 const router = Router();
@@ -136,8 +137,7 @@ router.delete("/:id", async (req, res) => {
   if (!existing) return notFound(res);
   if (!canEdit(existing, req.body?.passcode)) return wrongPasscode(res);
 
-  // TODO: also delete this concert's reviews once db/reviews.js exports
-  // deleteReviewsForConcert(id) (Jerith Gurusubburam).
+  await deleteReviewsForConcert(req.params.id);
   await db.deleteConcert(req.params.id);
   res.status(204).end();
 });
