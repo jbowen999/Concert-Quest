@@ -20,13 +20,37 @@
       </nav>
     </header>
     <main class="page">
-      <h1>Upcoming concerts</h1>
-      <!-- TODO: short "how to use" instructions (rubric: usability) -->
-      <label class="filter">
-        <input type="checkbox" id="free-only" />
-        Free events only
-      </label>
-      <ul class="concert-list" id="concert-list"></ul>
+      <h1 id="list-heading">Upcoming concerts</h1>
+      <p class="intro">
+        Live classical music around Boston, posted by the performers and
+        organizers themselves. Pick a concert to see the full program and read
+        reviews from people who went. Performing soon?
+        <a href="concert-form.html">Post your concert</a>. No account needed,
+        just a passcode so you can edit it later.
+      </p>
+      <form class="filters" id="filters" aria-label="Filter concerts">
+        <fieldset class="filters__when">
+          <legend>Show</legend>
+          <label>
+            <input type="radio" name="when" value="upcoming" checked />
+            Upcoming
+          </label>
+          <label>
+            <input type="radio" name="when" value="past" />
+            Past
+          </label>
+        </fieldset>
+        <label class="filters__free">
+          <input type="checkbox" name="free" />
+          Free events only
+        </label>
+      </form>
+      <p class="list-status" id="list-status" role="status"></p>
+      <ul
+        class="concert-list"
+        id="concert-list"
+        aria-labelledby="list-heading"
+      ></ul>
     </main>
     <footer class="site-footer">
       <p>Built for CS5610 by Julian Bowen and Jerith Gurusubburam.</p>
