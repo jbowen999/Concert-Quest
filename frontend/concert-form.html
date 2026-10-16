@@ -26,8 +26,73 @@
       <h1>Post a concert</h1>
       <!-- Reused for editing: concert-form.html?id=<concertId> -->
       <form class="concert-form" id="concert-form">
-        <!-- TODO: ensemble, venue, date/time, program, price, free checkbox,
-             ticket link, poster name, passcode -->
+        <label class="concert-form__field">
+          Ensemble or performer
+          <input name="ensemble" required maxlength="200" />
+        </label>
+        <label class="concert-form__field">
+          Venue
+          <input name="venue" required maxlength="200" />
+        </label>
+        <label class="concert-form__field">
+          Date and time
+          <input name="date" type="datetime-local" required />
+        </label>
+        <label class="concert-form__field">
+          Program
+          <textarea
+            name="program"
+            rows="4"
+            maxlength="5000"
+            placeholder="One piece per line"
+          ></textarea>
+        </label>
+        <fieldset class="concert-form__price">
+          <legend>Price</legend>
+          <label class="concert-form__check">
+            <input name="isFree" type="checkbox" />
+            Free event
+          </label>
+          <label class="concert-form__field">
+            Ticket price ($)
+            <input
+              name="price"
+              type="number"
+              min="0"
+              max="10000"
+              step="0.01"
+              required
+            />
+          </label>
+        </fieldset>
+        <label class="concert-form__field">
+          Ticket link (optional)
+          <input
+            name="ticketUrl"
+            type="url"
+            maxlength="2000"
+            placeholder="https://"
+          />
+        </label>
+        <label class="concert-form__field">
+          Your name
+          <input name="posterName" required maxlength="100" />
+        </label>
+        <label class="concert-form__field">
+          <span id="passcode-label">Choose a passcode</span>
+          <input
+            name="passcode"
+            type="password"
+            required
+            minlength="4"
+            autocomplete="new-password"
+            aria-describedby="passcode-hint"
+          />
+        </label>
+        <p class="concert-form__hint" id="passcode-hint">
+          You'll need this passcode to edit or delete your concert later.
+        </p>
+        <p class="concert-form__error" id="form-error" role="alert"></p>
         <button type="submit">Save concert</button>
       </form>
     </main>

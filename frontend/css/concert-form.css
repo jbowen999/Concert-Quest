@@ -1,2 +1,88 @@
 /* concert-form component */
-/* .concert-form */
+
+.concert-form {
+  display: grid;
+  gap: var(--space-m);
+  max-width: 36rem;
+}
+
+.concert-form__field {
+  display: grid;
+  gap: var(--space-s);
+  font-weight: 600;
+}
+
+.concert-form input:not([type="checkbox"]),
+.concert-form textarea {
+  width: 100%;
+  padding: var(--space-s);
+  font: inherit;
+  font-weight: normal;
+  border: 1px solid #b5b5b5;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.concert-form input:focus-visible,
+.concert-form textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.concert-form input:disabled {
+  background: #ececec;
+  color: #6b6b6b;
+}
+
+.concert-form__price {
+  display: grid;
+  gap: var(--space-m);
+  margin: 0;
+  padding: var(--space-m);
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+.concert-form__price legend {
+  padding: 0 var(--space-s);
+  font-weight: 600;
+}
+
+.concert-form__check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.concert-form__hint {
+  margin: calc(-1 * var(--space-s)) 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.concert-form__error {
+  margin: 0;
+  color: #b00020;
+  font-weight: 600;
+}
+
+.concert-form__error:empty {
+  display: none;
+}
+
+.concert-form button[type="submit"] {
+  justify-self: start;
+  padding: var(--space-s) var(--space-l);
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.concert-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
