@@ -54,7 +54,12 @@ function parseReview(body) {
 const notFound = (res) => res.status(404).json({ error: "Review not found" });
 const wrongPasscode = (res) =>
   res.status(403).json({ error: "Wrong passcode" });
-
+if (
+  typeof req.query.concertId !== "string" ||
+  !req.query.concertId.trim()
+) {
+  return res.status(400).json({ error: "concertId is required" });
+}
 router.get("/", async (req, res) => {
   const reviews = await db.listReviewsForConcert(req.query.concertId);
   if (!reviews) {
