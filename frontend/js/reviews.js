@@ -37,12 +37,14 @@ export function initReviews(concert) {
   const submitButton = form.querySelector('button[type="submit"]');
 
   async function load() {
+    list.setAttribute("aria-busy", "true");
     list.replaceChildren(emptyMessage("Loading reviews…"));
     try {
       const reviews = await api(
         `/reviews?concertId=${encodeURIComponent(concert._id)}`
       );
       renderList(reviews);
+      list.setAttribute("aria-busy", "false");
     } catch (err) {
       list.replaceChildren(
         emptyMessage(`Couldn't load reviews: ${err.message}`)
